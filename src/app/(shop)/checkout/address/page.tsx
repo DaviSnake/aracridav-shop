@@ -20,9 +20,6 @@ export default async function AddressPage() {
 
       </div>
 
-
-
-
     </div>
   );
 }
