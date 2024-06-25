@@ -1,8 +1,12 @@
 
 import { Title } from '@/components';
 import { AddressForm } from './ui/AddressForm';
+import { getCountries } from '@/actions';
 
-export default function AddressPage() {
+export default async function AddressPage() {
+
+  const countries = await getCountries();
+
   return (
     <div className="flex flex-col sm:justify-center sm:items-center mb-72 px-10 sm:px-0">
 
@@ -12,7 +16,7 @@ export default function AddressPage() {
         
         <Title title="Dirección" subtitle="Dirección de entrega" />
 
-        <AddressForm />
+        <AddressForm countries = { countries } />
 
       </div>
 
