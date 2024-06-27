@@ -39,10 +39,24 @@ export const placeOrder = async( productIds: ProductToOrder[], addrees: Address)
    //Carcular los montos, Encabezado
    const itemsInOrder = productIds.reduce( (count, p ) => count + p.quantity, 0 );
 
-   console.log(itemsInOrder);
+  // Los Totales de tax, subtotal y total
+  const { subTotal, impuesto, total } = productIds.reduce( (totals, item) => {
 
+    const productQuantity = item.quantity;
+    const product = products.find( product => product.id === item.productId );
 
-   
+    if ( !product ) throw new Error(`${ item.productId } no existe - 500`);
 
+    const subTotal = product.price * productQuantity;
+
+    totals.subTotal += subTotal;
+    totals.impuesto += subTotal * 0.19;
+    totals.total += subTotal * 1.19;
+
+    return totals;
+  }, { subTotal: 0, impuesto: 0, total: 0 } )
+
+  //Crear la transacción en la BD
+  
 
 }
