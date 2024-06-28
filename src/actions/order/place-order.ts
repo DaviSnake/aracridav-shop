@@ -13,7 +13,7 @@ interface ProductToOrder {
 }
 
 
-export const placeOrder = async( productIds: ProductToOrder[], addrees: Address) => {
+export const placeOrder = async( productIds: ProductToOrder[], address: Address) => {
 
     const session = await auth();
     const userId = session?.user.id;
@@ -86,13 +86,28 @@ export const placeOrder = async( productIds: ProductToOrder[], addrees: Address)
 
 
     // 3. Crear la dirección de la orden
+    const { country, ...restAddress } = address;
+    //console.log({address})
+    const orderAddress = await tx.orderAddress.create({
+        data: {
+            firstName: restAddress.firstName,
+            lastName: restAddress.lastName,
+            address: restAddress.address,
+            address2: restAddress.address2,
+            postalCode: restAddress.postalCode,
+            city: restAddress.city,
+            phone: restAddress.phone,
+            countryId: country,
+            orderId: order.id,
+        }
+    })
 
     return {
-        order: order,
         updatedProducts: [],
-        orderAddress: {}
-    }
+        order: order,
+        orderAddress: orderAddress,
 
+    }
   } );
 
 
