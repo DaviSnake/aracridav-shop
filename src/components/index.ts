@@ -5,9 +5,9 @@
 export * from './products/product-grid/ProductGrid';
 export * from './products/product-grid/ProductGridItem';
 
+export * from './paypal/PayPalButton';
 
-
-export * from './provider/Provider';
+export * from './providers/Providers';
 
 export * from './product/slideshow/ProductSlideshow';
 export * from './product/slideshow/ProductMobileSlideshow';
