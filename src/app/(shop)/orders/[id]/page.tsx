@@ -1,10 +1,11 @@
-import { PayPalButton, Title } from "@/components";
+'use server'
+
+import { PayPalButton, Title, TransBankButton } from "@/components";
 import Image from "next/image";
-import clsx from "clsx";
-import { IoCardOutline } from "react-icons/io5";
 import { getOrderById } from "@/actions";
 import { redirect } from "next/navigation";
 import { currentFormat } from "@/utils";
+import { OrderStatus } from "@/components/orders/OrderStatus";
 
 interface Props {
   params: {
@@ -32,21 +33,9 @@ export default async function OrdersByIdPage({ params }: Props) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           {/* Carrito */}
           <div className="flex flex-col mt-5">
-            <div
-              className={clsx(
-                "flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5",
-                {
-                  "bg-red-500": !order!.isPaid,
-                  "bg-green-700": order!.isPaid,
-                }
-              )}
-            >
-              <IoCardOutline size={30} />
-              {/* <span className="mx-2">Pendiente de pago</span> */}
-              <span className="mx-2">
-                {order!.isPaid ? "Pagada" : "No Pagada"}
-              </span>
-            </div>
+            <OrderStatus 
+              isPaid={ order!.isPaid }
+            />
 
             {/* Items */}
             {order!.OrderItem.map((item) => (
@@ -123,10 +112,24 @@ export default async function OrdersByIdPage({ params }: Props) {
             </div>
 
             <div className="mt-5 mb-2 w-full">
-              
-              <PayPalButton />
+              {
+                order!.isPaid 
+                ? (
+                  <OrderStatus 
+                  isPaid={ order!.isPaid }
+                />
+                ) : (
 
+                  // <PayPalButton
+                  //   amount={ order!.total }
+                  //   orderId={ order!.id } 
+                  // />
+                  <TransBankButton 
+                    amount={ order!.total }
+                    orderId={ order!.id } 
+                  />
 
+                )}
             </div>
           </div>
         </div>
