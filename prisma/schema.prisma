@@ -144,3 +144,17 @@ model OrderAddress {
   Order      Order   @relation(fields: [orderId], references: [id])
   orderId    String  @unique
 }
+
+model CartProduct {
+  id String @id
+  slug String
+  title String
+  price Int
+  quantity Int
+  size Size
+  image String
+  status Boolean
+
+  //Relaciones
+  
+}

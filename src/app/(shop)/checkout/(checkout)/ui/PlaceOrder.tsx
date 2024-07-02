@@ -19,6 +19,7 @@ export const PlaceOrder = () => {
   );
 
   const address = useAddressStore((state) => state.address);
+  const clearAddress = useAddressStore((state) => state.clearAddress);
   const cart = useCartStore((state) => state.cart);
   const clearCart = useCartStore((state) => state.clearCart);
   
@@ -36,7 +37,6 @@ export const PlaceOrder = () => {
       size: product.size,
     }) )
 
-    console.log({address, productsToOrder})
 
   //Server Action 
   
@@ -48,10 +48,10 @@ export const PlaceOrder = () => {
       return;
     }
 
-    console.log("llego aca")
-
     //Todo salio bien
     clearCart();
+    clearAddress();
+    //localStorage.removeItem("address-store");
     router.replace("/orders/" + resp.order!.id);
 
   }

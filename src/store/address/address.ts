@@ -17,6 +17,7 @@ interface State {
 
     //Methods
     setAddress: (address: State['address']) => void
+    clearAddress: () => void;
 }
 
 
@@ -35,6 +36,19 @@ export const useAddressStore = create<State>()(
             },
             setAddress: (address) => {
                 set({ address });
+            },
+
+            clearAddress: () => {
+                set({ address: {
+                    firstName: '',
+                    lastName: '',
+                    address: '',
+                    address2: '',
+                    postalCode: '',
+                    city: '',
+                    country: '',
+                    phone: '',
+                } })
             },
 
         }),
