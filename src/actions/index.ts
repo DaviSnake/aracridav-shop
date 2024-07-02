@@ -25,3 +25,7 @@ export * from './payments/transbank-check-payment';
 export * from './product/get-product-by-slug';
 export * from './product/get-stock-by-slug';
 export * from './product/product-pagination';
+
+export * from './users/get-paginated-users';
+export * from './users/change-user-role';
+
