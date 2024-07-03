@@ -11,6 +11,8 @@ export * from './auth/register';
 
 export * from './auth/country/get-countries';
 
+export * from './category/get-categories';
+
 export * from './order/place-order';
 export * from './order/get-order-by-id';
 export * from './order/get-order-by-user';
