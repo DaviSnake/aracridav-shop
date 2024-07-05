@@ -27,6 +27,6 @@ export interface ProductImage  {
   url: string;
 }
 
-type Category = 'men'|'women'|'kid'|'unisex';
+type Category = 'men'|'women'|'kids'|'unisex';
 export type Size = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL';
 export type Type = 'shirts'|'pants'|'hoodies'|'hats';
