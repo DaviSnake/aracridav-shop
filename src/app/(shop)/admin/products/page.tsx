@@ -24,7 +24,7 @@ export default async function ProductsPage({ searchParams }: Props) {
       <Title title="Mantenimiento de productos" />
 
       <div className="flex justify-end mb-5">
-        <Link href="/admin/products/new" className="btn-primary">
+        <Link href="/admin/product/new" className="btn-primary">
           Nuevo producto
         </Link>
       </div>
