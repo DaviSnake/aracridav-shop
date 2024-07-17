@@ -7,7 +7,7 @@ export default async function AdminLayout( { children }: {
 
     const session = await auth();
 
-    if ( session!.user.role !== "admin" ){
+    if (  session === null || session!.user.role !== "admin" ){
         redirect("/auth/login");
      }
 
