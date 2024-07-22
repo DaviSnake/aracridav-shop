@@ -58,6 +58,10 @@ export const LoginForm = () => {
         </div>
 
         <LoginButton />
+        <div className="flex items-center my-2" />
+        <Link href="/" className="btn-primary text-center">
+          Volver
+        </Link>
 
         {/* divisor l ine */}
         <div className="flex items-center my-5">

@@ -92,6 +92,10 @@ export const RegisterForm = () => {
       <span className="text-red-500">{ errorMessage } </span>
 
       <button className="btn-primary">Crear cuenta</button>
+      <div className="flex items-center my-2" />
+      <Link href="/" className="btn-primary text-center">
+        Volver
+      </Link>
 
       {/* divisor l ine */}
       <div className="flex items-center my-5">
@@ -103,6 +107,7 @@ export const RegisterForm = () => {
       <Link href="/auth/login" className="btn-secondary text-center">
         Ingresar
       </Link>
+      <div className="flex items-center my-2" />
     </form>
   );
 };
